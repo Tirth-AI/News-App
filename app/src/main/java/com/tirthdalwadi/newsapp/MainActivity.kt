@@ -65,8 +65,15 @@ class MainActivity : AppCompatActivity(), NewsItemClicked {
 
     private fun fetchData(){
         Log.d("MainActivity", "fetchData() entered")
-        val url2 = "https://newsdata.io/api/1/news?apikey=pub_208640fdfece4ce5cc8286d8a99f5b10c087b&language=en&country=in&page="
-        val newURL = url2 + pageNumberArray[insertIndex]
+        val url2 = "https://newsdata.io/api/1/news?apikey=pub_208640fdfece4ce5cc8286d8a99f5b10c087b&language=en&country=in"
+        Log.d("MainActivity", "$insertIndex")
+        var newURL = ""
+        newURL = if(insertIndex == 0) {
+            url2
+        }else {
+            url2 + "&page=" + pageNumberArray[insertIndex]
+        }
+        Log.d("MainActivity", "${newURL}")
 
         val jsonObjectRequest = JsonObjectRequest(
             Request.Method.GET,
@@ -106,7 +113,7 @@ class MainActivity : AppCompatActivity(), NewsItemClicked {
                 mAdapter.updateNews(newsArray)
             },
             {
-                Log.d("MainActivity", it.toString())
+                Log.d("MainActivity", "It is an error : $it")
             }
         )
         Log.d("MainActivity", "Request Object Created")

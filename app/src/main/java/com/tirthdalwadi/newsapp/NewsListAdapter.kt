@@ -80,7 +80,6 @@ class NewsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
     val titleView: TextView = itemView.findViewById(R.id.tv_newsFeed)
     val source: TextView = itemView.findViewById(R.id.tv_source)
     val updatedTime: TextView = itemView.findViewById(R.id.tv_updatedTime)
-    val newsImage: ImageView = itemView.findViewById(R.id.iv_newsImage)
 }
 
 interface NewsItemClicked{
